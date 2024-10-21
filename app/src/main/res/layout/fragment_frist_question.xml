@@ -45,5 +45,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_12" />
 
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/answer_14"
+        style="@style/question_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Negro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answer_13" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

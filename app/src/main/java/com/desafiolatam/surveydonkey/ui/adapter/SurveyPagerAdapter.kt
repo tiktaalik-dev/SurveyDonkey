@@ -24,6 +24,7 @@ class SurveyPagerAdapter(fm: FragmentActivity) : FragmentStateAdapter(fm) {
             3 -> ThirdQuestionFragment()
             4 -> FourthQuestionFragment()
             5 -> EndFragment()
-            else -> StartFragment()
+            else -> FirstQuestionFragment()
+            //else -> StartFragment()
         }
 }

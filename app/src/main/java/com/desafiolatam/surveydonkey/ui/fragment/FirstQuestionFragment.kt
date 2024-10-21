@@ -41,6 +41,10 @@ class FirstQuestionFragment : Fragment() {
                 if (checked) viewModel.addFirstAnswer(answer13.text.toString())
                 else viewModel.removeFirstAnswer(answer13.text.toString())
             }
+            answer14.setOnCheckedChangeListener { _, checked ->
+                if (checked) viewModel.addFirstAnswer(answer14.text.toString())
+                else viewModel.removeFirstAnswer(answer14.text.toString())
+            }
         }
     }
 

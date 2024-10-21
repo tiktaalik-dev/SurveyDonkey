@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         requestPermissionLocation()
 
-
-        //requestPermissionLauncher.launch((android.Manifest.permission.INTERNET))
+        requestPermissionLauncher.launch((android.Manifest.permission.INTERNET))
 
         viewPager = SurveyPagerAdapter(this)
         binding.vpMain.adapter = viewPager
