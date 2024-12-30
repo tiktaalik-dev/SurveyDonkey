@@ -15,7 +15,7 @@ class SurveyPagerAdapter(fm: FragmentActivity) : FragmentStateAdapter(fm) {
     // Cantidad de vistas en el ViewPager
     override fun getItemCount(): Int = 6
 
-    // Cada posicion del ViewPager retorna un fragment distinto
+    // Cada posición del ViewPager retorna un fragment distinto
     override fun createFragment(position: Int): Fragment =
         when (position) {
             0 -> StartFragment()

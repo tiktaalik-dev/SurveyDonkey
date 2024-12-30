@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/animation_halloween" />
+        app:lottie_rawRes="@raw/animation_halloween"
+        app:lottie_autoPlay="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

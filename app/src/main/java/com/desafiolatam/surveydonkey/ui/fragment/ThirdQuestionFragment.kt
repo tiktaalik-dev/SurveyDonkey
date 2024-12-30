@@ -13,7 +13,8 @@ import com.desafiolatam.surveydonkey.viewmodel.MainViewModel
 
 class ThirdQuestionFragment : Fragment() {
 
-    private var binding: FragmentThirdQuestionBinding? = null
+    private var _binding: FragmentThirdQuestionBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: MainViewModel by activityViewModels()
 
@@ -21,7 +22,7 @@ class ThirdQuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentThirdQuestionBinding.inflate(inflater,container,false)
+        _binding = FragmentThirdQuestionBinding.inflate(inflater,container,false)
         return binding!!.root
     }
 
@@ -30,22 +31,27 @@ class ThirdQuestionFragment : Fragment() {
 
         binding.run {
             this!!.answer31.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addThirdAnswer(answer31.text.toString())
-                else viewModel.removeThirdAnswer(answer31.text.toString())
+                if (checked) viewModel.addToAnswer(3, answer31.text.toString())
+                else viewModel.removeFromAnswer(3, answer31.text.toString())
             }
             this!!.answer32.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addThirdAnswer(answer32.text.toString())
-                else viewModel.removeThirdAnswer(answer32.text.toString())
+                if (checked) viewModel.addToAnswer(3, answer32.text.toString())
+                else viewModel.removeFromAnswer(3, answer32.text.toString())
             }
             this!!.answer33.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addThirdAnswer(answer33.text.toString())
-                else viewModel.removeThirdAnswer(answer33.text.toString())
+                if (checked) viewModel.addToAnswer(3, answer33.text.toString())
+                else viewModel.removeFromAnswer(3, answer33.text.toString())
             }
             this!!.answer34.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addThirdAnswer(answer34.text.toString())
-                else viewModel.removeThirdAnswer(answer34.text.toString())
+                if (checked) viewModel.addToAnswer(3, answer34.text.toString())
+                else viewModel.removeFromAnswer(3, answer34.text.toString())
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

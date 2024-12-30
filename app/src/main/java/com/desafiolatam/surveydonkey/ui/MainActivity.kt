@@ -1,5 +1,7 @@
 package com.desafiolatam.surveydonkey.ui
 
+import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
@@ -9,70 +11,58 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.desafiolatam.surveydonkey.databinding.ActivityMainBinding
 import com.desafiolatam.surveydonkey.ui.adapter.SurveyPagerAdapter
+import com.desafiolatam.surveydonkey.ui.fragment.FileHelper
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PermissionHandler {
 
+//    // Sobrescribir el contexto y la actividad de la interface
+//    override val currentContext: Context = this
+//    override val currentActivity: Activity = this
+
+    // Declarar la vista, el adaptador, y el FileHelper
     lateinit var binding: ActivityMainBinding
     lateinit var viewPager: SurveyPagerAdapter
-
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            isGranted ->
-            if (isGranted) {
-                permissionGranted()
-            }
-            else {
-                permissionDenied()
-            }
-        }
+    lateinit var fileHelper: FileHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Llamar al constructor de la superclase
         super.onCreate(savedInstanceState)
+
+        // Inflar la vista
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        // Establecer la vista
         setContentView(binding.root)
 
-        requestPermissionLocation()
+        // Inicializar FileHelper para que esté disponible cuando el último fragmento lo necesite
+        fileHelper = FileHelper(this)
+        fileHelper.initialize(this)
 
-        requestPermissionLauncher.launch((android.Manifest.permission.INTERNET))
+        // Pedir el permiso de ubicación
+        requestPermission(this, this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
 
+        // Pedir el permiso de internet
+        requestPermission(this, this, android.Manifest.permission.INTERNET)
+
+        // Instanciar el adaptador
         viewPager = SurveyPagerAdapter(this)
+
+        // Establecer el adaptador en el ViewPager
         binding.vpMain.adapter = viewPager
 
+        // Colocar un escuchador de clics en el botón de acción flotante
         binding.fab.setOnClickListener {
+
+            // Decidir qué hacer según la página actual del ViewPager que está visible
             when (binding.vpMain.currentItem) {
                 0 -> binding.vpMain.setCurrentItem(1, true)
                 1 -> binding.vpMain.setCurrentItem(2, true)
                 2 -> binding.vpMain.setCurrentItem(3, true)
                 3 -> binding.vpMain.setCurrentItem(4, true)
                 4 -> binding.vpMain.setCurrentItem(5, true)
+                else -> binding.vpMain.setCurrentItem(0, true)
             }
         }
-    }
-
-    private fun requestPermissionLocation() {
-        when {
-            ContextCompat.checkSelfPermission(
-                this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED -> {
-                    permissionGranted()
-                }
-            ActivityCompat.shouldShowRequestPermissionRationale(
-                this,android.Manifest.permission.ACCESS_COARSE_LOCATION) -> {
-                    Toast.makeText(this,"Solicitar nuevamente el permiso...",Toast.LENGTH_SHORT).show()
-                }
-            else -> {
-                requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_COARSE_LOCATION)
-            }
-        }
-    }
-
-
-
-    private fun permissionGranted(){
-        Toast.makeText(this,"Permiso concedido", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun permissionDenied(){
-        Toast.makeText(this,"Permiso denegado", Toast.LENGTH_SHORT).show()
     }
 }

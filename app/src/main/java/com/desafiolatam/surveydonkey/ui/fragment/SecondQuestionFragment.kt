@@ -30,18 +30,18 @@ class SecondQuestionFragment : Fragment() {
 
         binding.run {
             answer21.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addSecondAnswer(answer21.text.toString())
-                else viewModel.removeSecondAnswer(answer21.text.toString())
+                if (checked) viewModel.addToAnswer(2, answer21.text.toString())
+                else viewModel.removeFromAnswer(2, answer21.text.toString())
             }
 
             answer22.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addSecondAnswer(answer22.text.toString())
-                else viewModel.removeSecondAnswer(answer22.text.toString())
+                if (checked) viewModel.addToAnswer(2, answer22.text.toString())
+                else viewModel.removeFromAnswer(2, answer22.text.toString())
             }
 
             answer23.setOnCheckedChangeListener { _, checked ->
-                if (checked) viewModel.addSecondAnswer(answer23.text.toString())
-                else viewModel.removeSecondAnswer(answer23.text.toString())
+                if (checked) viewModel.addToAnswer(2, answer23.text.toString())
+                else viewModel.removeFromAnswer(2, answer23.text.toString())
             }
         }
     }

@@ -21,7 +21,7 @@
         android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Negro"
+        android:text="A. Negro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_third_question" />
@@ -31,7 +31,7 @@
         style="@style/question_check_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Azul Cobalto"
+        android:text="B. Azul Cobalto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_3_1" />
@@ -41,7 +41,7 @@
         style="@style/question_check_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Verde Oliva"
+        android:text="C. Verde Oliva"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_3_2" />
@@ -51,7 +51,7 @@
         style="@style/question_check_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ambar"
+        android:text="D. Ámbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answer_3_3" />

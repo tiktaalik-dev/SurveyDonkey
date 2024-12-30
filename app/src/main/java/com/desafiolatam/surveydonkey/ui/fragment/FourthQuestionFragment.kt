@@ -33,12 +33,13 @@ class FourthQuestionFragment : Fragment() {
                 viewModel.saveUserEmail(text.toString())
             }
             answer42.doOnTextChanged { text, _, _, _ ->
-                viewModel.saveUserSuggest(text.toString())
+                viewModel.saveUserRecommendation(text.toString())
             }
         }
     }
 
-
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
